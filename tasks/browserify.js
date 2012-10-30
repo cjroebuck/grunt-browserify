@@ -14,9 +14,9 @@ module.exports = function (grunt) {
   // TASKS
   // ==========================================================================
   grunt.registerMultiTask('browserify', 'Your task description goes here.', function () {
-    var browserify = require('browserify');
-
-    var b = browserify(this.data.options || {});
+    var browserify = require('browserify'),
+      b = browserify(this.data.options || {}),
+      files, src;
 
     self = this
     b.on('bundle', function() {
@@ -30,13 +30,18 @@ module.exports = function (grunt) {
       b.require(req);
     });
 
+    (this.data.aliases || []).forEach(function (alias) {
+      grunt.verbose.writeln('Adding "' + alias + '" to the aliases list');
+      b(JSON.parse("{" + alias + "}"));
+    });
+
     grunt.file.expandFiles(this.data.entries || []).forEach(function (filepath) {
       grunt.verbose.writeln('Adding "' + filepath + '" to the entry file list');
       b.addEntry(filepath);
     });
 
-    var files = grunt.file.expandFiles(this.data.prepend || []);
-    var src = grunt.helper('concat', files, {
+    files = grunt.file.expandFiles(this.data.prepend || []);
+    src = grunt.helper('concat', files, {
       separator: ''
     });
     b.prepend(src);
