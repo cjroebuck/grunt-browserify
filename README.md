@@ -30,10 +30,10 @@ Add this to ```grunt.initConfig()```
         entries: ['src/**/*.js'],
         prepend: ['<banner:meta.banner>'],
         append: [],
-	options: {
-	  debug: true,
-	  watch: true,
-	  cache: true
+        options: {
+          debug: true,
+          watch: true,
+          cache: true
 	},
         hook: function (bundle) {
           // Do something with bundle
