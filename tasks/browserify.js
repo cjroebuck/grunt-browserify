@@ -18,6 +18,13 @@ module.exports = function (grunt) {
 
     var b = browserify(this.data.options || {});
 
+    self = this
+    b.on('bundle', function() {
+      grunt.verbose.writeln('re-bundle');
+      grunt.file.write(self.target, b.bundle());
+    });
+
+
     (this.data.requires || []).forEach(function (req) {
       grunt.verbose.writeln('Adding "' + req + '" to the required module list');
       b.require(req);
