@@ -34,7 +34,7 @@ Add this to ```grunt.initConfig()```
           debug: true,
           watch: true,
           cache: true
-	},
+        },
         hook: function (bundle) {
           // Do something with bundle
         }
