@@ -28,8 +28,8 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt": "~0.3.11",
-    "browserify": "1.13.x"
+    "grunt": "latest",
+    "browserify": "latest"
   },
   "devDependencies": {
     "grunt": "~0.3.11",
