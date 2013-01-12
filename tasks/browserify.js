@@ -18,8 +18,8 @@ module.exports = function (grunt) {
     var helpers = require('grunt-lib-legacyhelpers').init(grunt);
 
     var browserify = require('browserify'),
-      b = browserify(this.data.options || {}),
-      files, src;
+        b = browserify(this.data.options || {}),
+        files, src;
 
     self = this
     b.on('bundle', function() {
