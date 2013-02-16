@@ -27,7 +27,6 @@ module.exports = function (grunt) {
       grunt.file.write(self.target, b.bundle());
     });
 
-
     if (this.data.beforeHook) {
       this.data.beforeHook.call(this, b);
     }
